@@ -46,15 +46,17 @@ def get_change():
 	Re-prompt if user fails to provide a non negative number
 	or an amount that is not rounded to cents.
 	"""
-	if is_float(sys.argv[1]):
-		change_owed = float(sys.argv[1])
+	if len(sys.argv) > 1:
 	
-	while True:
-		if is_non_negative(change_owed) and is_rounded_to_cents(change_owed) ==True:
-			break	
-		change_owed = get_float_input()
+		if is_float(sys.argv[1]):
+			change_owed = float(sys.argv[1])
+		
+		while True:
+			if is_non_negative(change_owed) and is_rounded_to_cents(change_owed) ==True:
+				break	
+			change_owed = get_float_input()
 
-	return round(100*change_owed, 2)		
+		return round(100*change_owed, 2)		
 	
 
 
