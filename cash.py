@@ -22,7 +22,7 @@ def is_rounded_to_cents(number):
 def get_change():
 	
 	change_owed=0
-	
+
 	IS_NON_NEGATIVE = False
 	IS_ROUNDED_TO_CENTS =False
 	
@@ -32,7 +32,7 @@ def get_change():
 			change_owed = float(input('Please type how much change is owed, rounded to cents.'))
 		except ValueError:
 			print("Sorry, please write a number")
-			continue
+			
 		if is_non_negative(change_owed) and is_rounded_to_cents(change_owed) ==True:
 			break
 			
