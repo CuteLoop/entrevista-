@@ -1,6 +1,7 @@
 import sys
 
 def is_non_negative(number):
+	print(f"non neg {number}")
 	if number >= 0:
 			return True
 	else:
@@ -8,30 +9,55 @@ def is_non_negative(number):
 		return False
 		
 def is_rounded_to_cents(number):
-	if number - round(number,2) < 0.000000000001:
+	print(f"rounding {number - round(number,2)}")
+	if number - round(number,2) >= 0:
 		return True
 	else:
 		print("Please round change to Cents:")
 		return False
 
 
-def make_float(number):
+def is_float(number):
 	try:
 		number = float(number)
 	except ValueError:
 		print("Sorry, please write a number:")
-		return -1
-	return number
-	
-	
-def get_change():
-	
-	change_owed = make_float(sys.argv[1])
-	while True:
-		if is_non_negative(change_owed) and is_rounded_to_cents(change_owed) ==True:
+		return False
 		
+	return True
+
+
+
+def get_float_input():
+
+	"""
+	Re-prompt if user fails to provide a float. 
+
+	"""
+	while True:
+		last_input = input('Change owed:')
+		if is_float(last_input):
+			float_input = float(last_input)
+			print (float_input)
+			return float_input
+		
+def get_change():
+			
+	"""
+	Re-prompt if user fails to provide a non negative number
+	or an amount that is not rounded to cents.
+	"""
+
+	if is_float(sys.argv[1]):
+		change_owed = float(sys.argv[1])
+	
+	while True:
+	
+		if is_non_negative(change_owed) and is_rounded_to_cents(change_owed) ==True:
 			break
-		change_owed = make_float((input('Please type how much change is owed, rounded to cents:')))
+			
+		change_owed = get_float_input()
+		
 	
 	return round(100*change_owed, 2)		
 	
