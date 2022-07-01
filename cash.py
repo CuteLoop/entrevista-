@@ -1,7 +1,3 @@
-import sys
-
-
-
 
 def is_non_negative(number):
 	if number >= 0:
@@ -9,7 +5,6 @@ def is_non_negative(number):
 	else:
 		print("Please write a non negative value for owed change.")
 		return False
-		
 		
 def is_rounded_to_cents(number):
 	if number - round(number,2) < 0.000000000001:
@@ -21,13 +16,7 @@ def is_rounded_to_cents(number):
 
 def get_change():
 	
-	change_owed=0
-
-	IS_NON_NEGATIVE = False
-	IS_ROUNDED_TO_CENTS =False
-	
 	while True:
-		
 		try:
 			change_owed = float(input('Please type how much change is owed, rounded to cents.'))
 		except ValueError:
@@ -38,14 +27,6 @@ def get_change():
 			
 	return change_owed		
 	
-	
-
-
-def get_cents_owed():
-
-	change_owed = float(sys.argv[1])
-	return round(change_owed*100)
-
 
 def min_number_of_coins():
 
